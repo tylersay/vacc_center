@@ -1,7 +1,9 @@
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
+from django.contrib.auth.models import User
 
 # Create your models here.
+
 
 class vac_Center(models.Model):
   center_name = models.CharField(max_length=100)
@@ -9,7 +11,7 @@ class vac_Center(models.Model):
     ("P", "Pfizer"),
     ("M", "Moderna")
   )
-  vac_type = models.CharField(choices=VAC_TYPE)
+  vac_type = models.CharField(max_length=100, choices=VAC_TYPE)
   postal_code = models.IntegerField(
     default=1, 
     validators=[
@@ -32,13 +34,21 @@ class slots(models.Model):
     ('3pm', '3pm'),
     ('4pm', '4pm')   
   )
-  time_slots = models.CharField(choices=TIME_SLOTS)
+  time_slots = models.CharField(max_length=100, choices=TIME_SLOTS)
   FIRST_OR_SECOND = (
     ('First', 'First jab'),
     ('Second', 'Second jab')
   )
-  first_or_second = models.CharField(choices=FIRST_OR_SECOND)
-  person_name = models.CharField(max_length=100)
+  first_or_second = models.CharField(max_length=100, choices=FIRST_OR_SECOND)
+  person_name = models.CharField(max_length=100,)
   person_nric = models.CharField(max_length=4)
 
-  
+
+class person(models.Model):
+  user = models.OneToOneField(User, on_delete=models.PROTECT)
+  JAB_DONE = (
+    ('None', 'None'),
+    ('First done', 'First done'),
+    ('Second done', 'Second done')
+  )
+  jab_done = models.CharField(max_length=100, choices=JAB_DONE)
