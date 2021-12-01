@@ -41,7 +41,7 @@ class Slots(models.Model):
   )
   first_or_second = models.CharField(max_length=100, choices=FIRST_OR_SECOND)
   person_name = models.CharField(max_length=100,)
-  person_nric = models.CharField(max_length=4)
+  person_nric = models.CharField(max_length=4, null=True)
 
 
 class Persons(models.Model):
@@ -52,3 +52,4 @@ class Persons(models.Model):
     ('Second done', 'Second done')
   )
   jab_done = models.CharField(max_length=100, choices=JAB_DONE)
+  

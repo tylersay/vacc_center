@@ -89,4 +89,11 @@ class SlotsSet(viewsets.ModelViewSet):
     # optional permission class set permission level
     permission_classes = [permissions.IsAuthenticatedOrReadOnly] #Coule be [permissions.IsAuthenticated]
 
+class Vac_Center_ViewSet(viewsets.ModelViewSet):
+    ## The Main Query for the index route
+    queryset = Vac_Centers.objects.all()
+    # The serializer class for serializing output
+    serializer_class = vac_CenterSerializer
+    # optional permission class set permission level
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly] #Coule be [permissions.IsAuthenticated]
 
