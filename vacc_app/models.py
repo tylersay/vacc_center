@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 
-class vac_Center(models.Model):
+class vac_Centers(models.Model):
   center_name = models.CharField(max_length=100)
   VAC_TYPE = (
     ("P", "Pfizer"),
@@ -22,7 +22,7 @@ class vac_Center(models.Model):
 
 
 class slots(models.Model):
-  vac_center = models.ForeignKey(vac_Center, on_delete= models.CASCADE)
+  vac_center = models.ForeignKey(vac_Centers, on_delete= models.CASCADE)
   date_assigned = models.DateField()
   TIME_SLOTS = (
     ('9am', '9am'),
@@ -44,7 +44,7 @@ class slots(models.Model):
   person_nric = models.CharField(max_length=4)
 
 
-class person(models.Model):
+class persons(models.Model):
   user = models.OneToOneField(User, on_delete=models.PROTECT)
   JAB_DONE = (
     ('None', 'None'),
