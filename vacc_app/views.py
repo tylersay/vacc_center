@@ -87,7 +87,7 @@ class SlotsSet(viewsets.ModelViewSet):
     # The serializer class for serializing output
     serializer_class = slotsSerializer
     # optional permission class set permission level
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly] #Coule be [permissions.IsAuthenticated]
+    permission_classes = [permissions.AllowAny] #Coule be [permissions.IsAuthenticated]
 
 class Vac_Center_ViewSet(viewsets.ModelViewSet):
     ## The Main Query for the index route
