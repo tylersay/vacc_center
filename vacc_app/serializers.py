@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
 
-from vaccine.vacc_app.models import persons, slots, vac_Centers
+from .models import Persons, Slots, Vac_Centers
 
 class UserSerializer(serializers.ModelSerializer):
 
@@ -15,15 +15,15 @@ class TokenSerializer(serializers.Serializer):
 
 class vac_CenterSerializer(serializers.ModelSerializer):
   class Meta:
-    model = vac_Centers
+    model = Vac_Centers
     fields = "__all__"
 
 class slotsSerializer(serializers.ModelSerializer):
   class Meta:
-    model = slots
+    model = Slots
     fields = "__all__"
 
 class personsSerializer(serializers.ModelSerializer):
   class Meta:
-    model = persons
+    model = Persons
     fields = "__all__"
